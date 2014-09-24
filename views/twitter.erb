@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="/css/myStyle.css">	
+		<title>Popular</title>
+	</head>
+	<body>
+		<div id="cabecera">
+	 		       <!--<p><img src="http://img1.wikia.nocookie.net/__cb20110512040338/kimpossible/images/thumb/1/11/Twitter_bird_icon.png/480px-Twitter_bird_icon.png" WIDTH=100 HEIGHT=100 />-->
+			<img class="displayed" src="/img/logo.jpg" WIDTH=800 HEIGHT=200 />
+	 	</div>
+	 	<div>
+			<p class="centrado"><b>Contar la Popularidad de Nuestros Amigos en Twitter</b></p>
+		</div>
+	 	<div id="re">
+		 	<form action="/" method="post">
+		   		<p><b>Introduzca su nombre en Twitter: </b></p><input type="text" name="firstname"  value="" autofocus>
+		   		<p><b>¿A cuántos amigos desea ver? </b></p><input type="text" name="n" value="1">
+				<input  type="submit" value="Submit" >		   		
+		 	</form>
+	 	</div>
+ 		<div id="izquierda">
+			<% if @name == ''%>
+				<p id="warning"> No se ha introducido usuario o es incorrecto </p>
+			<%else%>
+				<p><b> Usuario <%= @name %></b></p>
+			<%end %>
+
+			<% if @name != ''%>
+				<%if @number>10%>
+					<p id="warning"> Sólo se puede mostrar hasta 10 amigos </p>
+				<%elsif @seguidores.length < @number %>
+					<p id="warning">Sorry! El usuario solo tiene <%= @seguidores.length %> amigos.</p>
+					<p>Numero de amigos: <%= @seguidores.length %> amigos :</p>
+					<ol>
+						<% @seguidores.each do |i| %> 
+							<li id="col"><%= i %><br></li>
+						<% end %>
+					</ol>
+				<%else%>
+					<p>Numero de amigos: <%= @number %> amigos :</p>
+					<ol>
+						<% @seguidores.each do |i| %> 
+							<li id="col"><%= i %><br></li>
+						<% end %>
+					</ol>
+				<%end%>
+			<%end%>
+		</div>	
+	</body>
+</html>
