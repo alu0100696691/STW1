@@ -32,6 +32,8 @@ Aplicación web en Sinatra que una vez obtenido el nombre del usuario muestre la
 ###Versión final para contar nuestros amigos y sus seguidores ordenados de mayor a menor
 
 ```
+seguidores = Twitter.following(@name)
+
 #almacenar en el hash numero de seguidos con sus seguidores
 ordenado = Hash.new
 
